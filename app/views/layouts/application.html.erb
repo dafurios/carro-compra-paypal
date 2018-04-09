@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CarroCompra</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+<%= render 'shared/navbar' %>
+    <% if notice.present? %>
+
+    <div class="alert alert-success" role="alert">
+   <%= notice  %>
+</div>
+
+
+
+    <% end %>
+
+    <% if alert.present? %>
+
+    <div class="alert alert-danger" role="alert">
+        <%= alert %>
+        </div>
+    <% end %>
+
+    <%= yield %>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  </body>
+</html>

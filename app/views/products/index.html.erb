@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+
+    <% @products.each do |product| %>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag product.photo , class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="card-text"><strong>PRECIO = <%= product.price %> </strong></p>
+              <div class=" text-center">
+              <a href="<%= product_orders_path(product) %>" class="btn btn-success" data-method="post">  ¡ OFERTAS ! <i class="fas fa-shopping-cart"></i></a>
+              <%=link_to 'Agregar al Carro <i class="fas fa-shopping-cart"></i>'.html_safe , product_orders_path(product), class: "btn btn-success", method: :post %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% end %>
+
+        <%= link_to "comprar" %>
+
+
+    <% @products.each do |product| %>
+
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag product.photo , class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"> <strong>PRICE = $<%= product.price %>  </strong></p>
+          <div class=" text-center">
+          <a href="#" class="btn btn-primary">COMPRE YA !</a>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
+
+    <% @products.each do |product| %>
+
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag product.photo , class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text">PRECIO = <%= product.price %></p>
+          <div class=" text-center">
+          <a href="#" class="btn btn-danger"> </strong> ¡ AGOTADO ! </strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+  </div>
+</div>

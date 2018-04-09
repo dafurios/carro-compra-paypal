@@ -1,0 +1,98 @@
+<br>
+<%= link_to "Continuar Comprando", root_path, class: "btn btn-success"  %>
+
+<%= link_to "Vaciar Carro", empty_cart_orders_path, class: "btn btn-warning", method: :delete  %>
+
+
+
+
+<% if @cart.present? %>
+<table class= "table table-hover">
+  <tr>
+    <th>
+      Producto
+    </th>
+
+  <th>
+    Precio
+  </th>
+
+  <th>
+    Cantidad
+  </th>
+
+
+  <th>
+    Subtotal
+  </th>
+
+  <th>
+    Eliminar
+  </th>
+
+    </tr>
+
+    <% @cart.each do |order| %>
+    <tr>
+      <td>
+        <%= order.product.name %>
+      </td>
+
+      <td>
+        $  <%= order.price %>
+      </td>
+
+      <td>
+         <%= order.quantity %>
+      </td>
+
+      <td>
+        $ <%= order.quantity * order.product.price  %>
+      </td>
+
+      <td>
+        <%= link_to order_path(order), class: "btn btn-danger btn-sm", method: :delete do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </td>
+
+
+    </tr>
+
+    <% end %>
+
+    <tr>
+      <th>
+       Total:
+      </th>
+
+      <th>
+
+      </th>
+
+
+    <th>
+     <%=  @cantidad %>
+    </th>
+
+
+        <th>
+        $  <%= @total %>
+        </th>
+
+    </tr>
+
+
+</table>
+
+<div class="row">
+  <div class="col-md-2 offset-10">
+    <%= link_to 'Confirmar compra', pre_pay_billings_path, class: 'btn btn-success float-right' %>
+
+  </div>
+
+</div>
+
+<% else %>
+<h5>No hay productos en el carro</h5>
+<% end %>
